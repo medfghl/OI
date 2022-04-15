@@ -1,0 +1,80 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define N 10
+
+void triBulles (int tab[], int tailleTab)
+{
+int i, j, temp;
+for (int i=0 ; i<tailleTab ; i++)
+{
+      for (int j=0 ; j<tailleTab-1 ; j++)
+      {
+            if (tab[j]>tab[j+1])
+            {
+                  temp = tab[j];
+                  tab[j]=tab[j+1];
+                  tab[j+1]=temp;
+            }
+      }
+}
+}
+
+void affiche(int tab[], int tailleTab)
+{
+      for (int i=0 ; i<tailleTab ; i++)
+      printf("%d ", tab[i]);
+}
+
+
+int main ()
+{
+int tableau[N];
+srand(time(NULL));
+for (int i=0 ; i<N ; i++)
+      {
+      tableau[i]=rand()%31;
+      }
+affiche(tableau, N);
+printf("\n");
+triBulles(tableau, N);
+affiche(tableau, N);
+
+// tri par parité
+
+int pair[N], impair[N];
+int N_pair=0, N_impair=0;
+for (int i=0 ; i<N ; i++)
+{
+      if(tableau[i]%2 == 0)
+      {
+        pair[N_pair] = tableau[i];
+        N_pair++;
+      }
+      else
+      {
+        impair[N_impair] = tableau[i];
+        N_impair++;
+      }
+}
+triBulles(pair, N_pair);
+triBulles(impair, N_impair);
+
+int i=0, j=0;
+for(j=0 ; j < N_impair ; j++)
+{
+      tableau[i] = impair[j];
+      i++;
+}
+
+for(j=0; j< N_pair; j++)
+{
+      tableau[i] = pair[j];
+      i++;
+}
+
+printf("\ntableau impair-pair : \n");
+affiche(tableau, i);
+
+  return 0;
+}
