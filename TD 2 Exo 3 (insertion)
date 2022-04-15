@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define N 11
+
+void triBulles (int tab[], int tailleTab)
+{
+int i, j, temp;
+for (int i=0 ; i<tailleTab ; i++)
+{
+      for (int j=0 ; j<tailleTab-1 ; j++)
+      {
+            if (tab[j]>tab[j+1])
+            {
+                  temp = tab[j];
+                  tab[j]=tab[j+1];
+                  tab[j+1]=temp;
+            }
+      }
+}
+}
+
+void affiche(int tab[], int tailleTab)
+{
+      for (int i=0 ; i<tailleTab ; i++)
+      printf("%d ", tab[i]);
+}
+
+
+int main ()
+{
+int tableau[N];
+srand(time(NULL));
+for (int i=0 ; i<N-1 ; i++)
+      {
+      tableau[i]=rand()%31;
+      }
+affiche(tableau, N-1);
+
+printf("\n");
+
+triBulles(tableau, N-1);
+
+affiche(tableau, N-1);
+
+printf("\nSaisissez votre valeur du tab : ");
+
+scanf("%d", &tableau[N-1]);
+
+affiche(tableau, N);
+
+printf("\n");
+
+triBulles(tableau, N);
+
+affiche(tableau, N);
+
+  return 0;
+}
