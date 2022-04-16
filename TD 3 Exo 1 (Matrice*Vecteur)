@@ -7,21 +7,21 @@
 
 int main()
 {
-float A[M][N], V[N], W[M];
+int A[M][N], V[N], W[M];
 int i, j;
 // Initialisation de A[N,M]
+srand(time(NULL));
 for (i=0 ; i<M ; i++)
 {
       for (j=0 ; j<N ; j++)
       {
-          srand(time(NULL));
           A[i][j]=rand()%100;
       }
 }
 // Initialisation de V[N]
+srand(time(NULL));
 for (i=0 ; i<N ; i++)
 {
-    srand(time(NULL));
     V[i]=rand()%100;
 }
 // Multiplixation
@@ -35,9 +35,9 @@ W[i]=0;
 }
 // Affichage de A
 printf("A = ");
-for (i=0 ; i<N ; i++)
+for (j=0 ; j<N ; j++)
 {
-      printf("%6d", A[i][i]);
+      printf("%6d", A[j][j]);
 }
 
 // Affichage de V
@@ -51,7 +51,7 @@ for (i=0 ; i<N ; i++)
 printf("\nW = ");
 for (i=0 ; i<M; i++)
 {
-      printf("%6d", W[i]);
+      printf("%9d", W[i]);
 }
 
     return 0;
