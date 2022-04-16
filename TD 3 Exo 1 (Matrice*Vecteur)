@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define M 3
+#define N 3
+
+
+int main()
+{
+float A[M][N], V[N], W[M];
+int i, j;
+// Initialisation de A[N,M]
+for (i=0 ; i<M ; i++)
+{
+      for (j=0 ; j<N ; j++)
+      {
+          srand(time(NULL));
+          A[i][j]=rand()%100;
+      }
+}
+// Initialisation de V[N]
+for (i=0 ; i<N ; i++)
+{
+    srand(time(NULL));
+    V[i]=rand()%100;
+}
+// Multiplixation
+for(i=0 ; i<M ; i++)
+{
+W[i]=0;
+      for (j=0 ; j<N ; j++)
+      {
+         W[i]+= A[i][j]*V[j];
+      }
+}
+// Affichage de A
+printf("A = ");
+for (i=0 ; i<N ; i++)
+{
+      printf("%6d", A[i][i]);
+}
+
+// Affichage de V
+printf("\nV = ");
+for (i=0 ; i<N ; i++)
+{
+      printf("%6d", V[i]);
+}
+
+// Affichage de W
+printf("\nW = ");
+for (i=0 ; i<M; i++)
+{
+      printf("%6d", W[i]);
+}
+
+    return 0;
+}
