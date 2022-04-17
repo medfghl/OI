@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define max 3
+
+int estCarreMagique (int tab[][], int nbLignes, int nbColonnes)
+{
+int i, j;
+int s1, s2;
+int ligne, colonne;
+for (i=0 ; i<nbColonnes ; i++)
+{
+      s1+=tab[i][i];
+      s2+=tab[i][nbColonnes-1-i];
+}
+if(s1 != s2)
+  return 0;
+  
+else
+{
+for(i=0 ; i<nbLignes ; i++)
+{
+      for(j=0 ; j<nbColonnes ; j++)
+      {
+         ligne+=tab[i][j];
+         colonne+=tab[j][i];
+      }
+}
+if(ligne!=colonne || ligne!=s1)
+  return 0;
+}
+   return 1;
+}
+
+
+int main()
+{
+int A[MAX][MAX];
+int i, j;
+    
+// Lecture de A
+for(i = 0; i < MAX; i++)
+{
+for(j = 0; j < MAX; j++)
+      {
+      printf("Entrez A[%d][%d] : ", i, j);
+      scanf("%d", &A[i][j]);
+      }
+}
+    
+//Affichage de A
+printf("A = \n");
+for(i = 0; i < MAX; i++)
+{
+      for(j = 0; j < MAX; j++)
+      {
+            printf("%5d ", A[i][j]);
+      }
+printf("\n");
+}
+if(estCarreMagique(A))
+      printf("A est une matrice carré magique \n");
+else
+      printf("A n'est une matrice carré magique \n");
+return 0;
+}
