@@ -35,9 +35,12 @@ W[i]=0;
 }
 // Affichage de A
 printf("A = ");
-for (j=0 ; j<N ; j++)
+for (i=0 ; i<M ; i++)
 {
-      printf("%6d", A[j][j]);
+    for (j=0 ; j<N ; j++)
+    {
+        printf("%6d", A[i][j]);
+    }
 }
 
 // Affichage de V
@@ -51,7 +54,7 @@ for (i=0 ; i<N ; i++)
 printf("\nW = ");
 for (i=0 ; i<M; i++)
 {
-      printf("%9d", W[i]);
+      printf("%6d", W[i]);
 }
 
     return 0;
