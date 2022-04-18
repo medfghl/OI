@@ -1,0 +1,72 @@
+#include <stdio.h>
+
+struct duree
+{
+      unsigned int heure;
+      unsigned int minute;
+      double seconde;
+}
+
+void duree-affiche(stuct duree temps)
+{
+   printf("la durée est : %d:%d:%f\n", temps.heure, temps.minute, temps.seconde);
+}
+
+duree1 : heure1 : minute1 : seconde1
+duree2 : heure2 : minute2 : seconde2
+
+struct duree duree_min (stuct duree temps1, struct duree temps2)
+{
+   if (temps1.heure!=temps2.heure)
+   {
+      if (temps1.heure<temps2.heure)
+         returun temps1;
+      else 
+         return temps2;
+   }
+
+else if(temps1.minute!=temps2.minute)
+.....
+else .........
+}
+
+
+int main()
+{
+struct duree temps;
+temps.heure= /2;
+temps.minute=0;
+temps.seconde=1;
+duree_affiche(temps);
+double b= conversion_duree_seconde(temps);
+printf("Le nb total de second est %f\n", b);
+struct duree temps1= conversion_seconde_duree(b-1);
+duree_affiche(temps1);
+duree_affiche(duree_min(temps,temps1));
+duree_affiche(duree_difference(temps,temps1));
+
+    return 0;
+}
+
+struct duree duree_difference(struct duree temps1, struct duree temps2)
+{
+  double b1= conversion_duree_seconde(temps1);
+  double b2= conversion_duree_seconde(temps2);
+  double b=fabs(b1-b2);
+  return conversion_seconde_duree(b);
+}
+
+double conversion_duree_seconde(struct duree temps)
+{
+   return temps.heure*3600+temps.minute*60+temps.seconde;
+}
+
+struct duree conversion_seconde_duree(double seconde)
+{
+   struct duree temps;
+   temps.heure=(unsigned int)seconde/3600;
+   seconde=seconde-tempsheure*3600;
+   temps.minute=(unsigned int)seconde/60;
+   temps.seconde=seconde-seconde*60;
+   return temps;
+}
