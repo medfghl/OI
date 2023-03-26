@@ -1,0 +1,97 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void InitV(int V[], int N, int a) // fonction d'initialisation avec des valeurs arbitraires enti�res positives
+{
+     srand(time(NULL)); // pour r�initialiser les chiffres al�atoires donn�s � chaque run
+     for (int i=0; i<N ; i++)
+        V[i]=rand()%a;         // Attribuer une valeur al�atoire � chaque case du vecteur en le parcourant avec la boucle for
+}
+
+void AffichV(int V[], int N) // fonction qui pr�sente/affiche les valeurs sur une seule ligne
+{
+    for (int i=0; i<N; i++) // boucle pour parcourir le tableau et afficher les valeurs de chaque case
+        printf("%d ", V[i]);
+}
+
+void tri_bulles (int V[], int N)
+{
+    int i, j, temp; // i: it�ration pour laisser la valeur maximum au i�me �l�ment du tableau
+                    // j: it�ration pour comparer �l�ment par �l�ment
+                    // temp: on y stock la valeur maximum
+    for (i = N-1; i>0 ; i--)
+    // chaque it�ration, la valeur maximum est dans le i�me �l�ment de tableau
+    // alors, on compare seulement les �l�ments qui sont dans les indices entre O et i-1
+    // si V[j] > V[j+1], on doit changer l'ordre
+    {
+        for (j=0; j<i; j++)
+        {
+            if (V[j] > V[j+1])
+            {
+                temp = V[j];
+                V[j] = V[j+1];
+                V[j+1] = temp;
+            }
+        }
+    }
+}
+int main()
+{
+    int a=10, N=10; // D�claration de la taille et de a l'intervalle ou piocher les chiffres al�a
+    int V[N]; // D�claration du tableau
+    InitV (V, N, a); // Appel de la fonction d'initilisation
+    printf("Exercice 01:\n\n");
+
+    AffichV(V, N); // Appel de la fonction d'affichage du premier vecteur al�atoire donn�
+    tri_bulles(V, N); // Appel de la fonction pour trier le vecteur
+    printf("\n"); // Pour afficher les vecteurs dinstinguement sur 2 lignes
+    AffichV(V,N); // Afficher le nouveau vecteur tri�
+    printf("\n");
+
+    printf("\nExercice 02:");
+    printf("\n");
+    int TAB1[4]={3,2,5,9}; // Les valeurs du tableau 1
+    int TAB2[3]={9, 5, 1}; // Les valeurs du tableau 2
+    printf("\n");
+    printf("\n");
+    AffichV(TAB1, 4); // Appel de la fonction pour afficher TAB1
+    printf("\n");
+    AffichV(TAB2, 3); // Appel de la fonction pour afficher TAB2
+    tri_bulles(TAB1, 4); // Appel de la fonction pour TRIER TAB1
+    tri_bulles(TAB2, 3); // Appel de la fonction pour TRIER TAB2
+    printf("\n");
+    AffichV(TAB1, 4); // Appel de la fonction pour afficher le nouveau TAB1 tri�
+    printf("\n");
+    AffichV(TAB2, 3); // Appel de la fonction pour afficher le nouveau TAB2 tri�
+
+
+    int k=0;
+    int coute =0;
+    int TAB3[3];
+    for (int i=0; i<4 ; i++) // Pour parcourir le tab1
+    {
+        for (int j=0; j<3 ; j++) // Pour parcourir le tab2
+        {
+            if(TAB1[i]==TAB2[j]) // Comparer tab1 et tab2
+            {
+                for(int x=0; x<k; x++) // tab 3
+                {
+                    if(TAB1[i]==TAB3[x]) // Boucle pour compter le nombre de doublons
+                        coute++; // Compteur pour le nb de doublon
+                    if(coute==0)
+                    {
+                        TAB3[k]=TAB2[i]; // Mettre le doublon dans tab3
+                        k++; // Augmenter la taille de tab3
+                    }
+
+                }
+            }
+        }
+    }
+    printf("\n");
+    AffichV(TAB3, 1);
+
+return 0;
+}
+
