@@ -1,0 +1,82 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int nb_bat=20;
+
+int machine_joue (int nb_bat)
+{
+    if (nb_bat%4==0) // multiple de 4
+        nb_bat = nb_bat-3; // retirer 3 batons
+    else
+    if (nb_bat%4==1) // multipe de 4+1
+        nb_bat = nb_bat; // rien faire
+    else
+    if (nb_bat%4==2) // multipe de 4+2
+        nb_bat = nb_bat-1; // retirer 1
+    else
+    if (nb_bat%4==3) // multiple de 4+3
+        nb_bat = nb_bat-2; // retirer 2
+
+return nb_bat;
+}
+
+int utilisateur_joue (int nb_bat)
+{
+    int nb_bat_ret;
+    while (nb_bat_ret< 1 || nb_bat_ret> 3)
+        {
+            printf("\nRetirez 1, 2 ou 3 batons : ");
+            scanf("%d",&nb_bat_ret);
+        }
+
+return nb_bat-nb_bat_ret;
+}
+
+int changer_joeur (int jo)
+{
+    if (jo==1)
+    jo=2;
+    else
+    if (jo==2)
+    jo=1;
+
+return jo;
+}
+
+int aleat()
+{
+    srand(time(NULL));
+    int jo=rand()%2+1;
+
+return jo;
+}
+
+
+int main()
+{
+    int i, jo;
+    jo= aleat();
+    printf("Le joueur qui commence est %d\n", jo);
+    printf("\nNombre de batons restants : %d\n", (nb_bat));
+
+while (nb_bat>0)
+{
+    if (jo==1)
+    {
+    nb_bat= machine_joue(nb_bat);
+    printf("\nLe joueur 1 a joue, batons restants : %d\n", (nb_bat));
+    jo= changer_joeur(jo);
+    }
+    else if (jo==2)
+    {
+    nb_bat= utilisateur_joue(nb_bat);
+    printf("Le nb de batons restants %d", nb_bat);
+    jo= changer_joeur(jo);
+    }
+}
+
+return 0;
+}
+
+
